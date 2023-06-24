@@ -4,9 +4,118 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowChromeMultiscreen.UI"
+        xmlns:converters="clr-namespace:WindowChromeMultiscreen.UI.Converters"
         mc:Ignorable="d"
-        Title="Window Chrome Multiscreen" Height="450" Width="800">
-    <Grid>
+        Title="Window Chrome Multiscreen"
+        MinHeight="{StaticResource WindowMinHeight}"
+        MinWidth="{StaticResource WindowMinWidth}"
+        Height="{StaticResource WindowHeight}"
+        Width="{StaticResource WindowWidth}"
+        d:DesignHeight="{StaticResource WindowHeight}"
+        d:DesignWidth="{StaticResource WindowWidth}"
+        SizeToContent="Manual"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
+        RenderOptions.BitmapScalingMode="Fant"
+        AutomationProperties.IsOffscreenBehavior="Onscreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Style="{StaticResource ChromeTitlebarStyle}"
+        StateChanged="Window_StateChanged">
 
-    </Grid>
+    <Window.Resources>
+        <converters:DoubleToGridLenghtConverter x:Key="DoubleToGridLenghtConverter" />
+    </Window.Resources>
+
+    <!--Main Window Border-->
+    <Border Style="{StaticResource WindowMainPanelStyle}">
+        <!--Main Grid-->
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="{Binding
+                        Source={StaticResource TitlebarSize},
+                        Mode=OneWay,
+                        Converter={StaticResource DoubleToGridLenghtConverter}}" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--Title Bar-->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <!--Active/Inactive Color for Title Bar-->
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Style.Triggers>
+                            <DataTrigger
+                                Binding="{Binding IsActive, RelativeSource={RelativeSource AncestorType=Window}}"
+                                Value="False">
+                                <Setter Property="Background"
+                                        Value="{DynamicResource WindowTitlebarInactiveBackgroundBrush}" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+
+                <!--Minimize Button-->
+                <Button Grid.Column="2"
+                        Click="OnMinimizeButtonClick"
+                        RenderOptions.EdgeMode="Aliased"
+                        Style="{StaticResource TitlebarMinimizeMaximizeButtonStyle}">
+                    <Path
+                        Data="{DynamicResource Minimize}"
+                        Fill="{StaticResource BlackBrush}"
+                        StrokeThickness="2" />
+                </Button>
+
+                <!--Maximize Button-->
+                <Button Grid.Column="3"
+                        Name="MaximizeButton"
+                        Click="OnMaximizeRestoreButtonClick"
+                        Style="{StaticResource TitlebarMinimizeMaximizeButtonStyle}">
+                    <Path
+                        Data="{DynamicResource Maximize}"
+                        Fill="{StaticResource BlackBrush}"
+                        StrokeThickness="1" />
+                </Button>
+
+                <!--Restore Button-->
+                <Button Grid.Column="3"
+                        Name="RestoreButton"
+                        Click="OnMaximizeRestoreButtonClick"
+                        Style="{StaticResource TitlebarMinimizeMaximizeButtonStyle}">
+                    <Path
+                        Data="{DynamicResource Restore}"
+                        Fill="Black"
+                        StrokeThickness="1" />
+                </Button>
+
+                <!--Close Button-->
+                <Button Grid.Column="4"
+                        Click="OnCloseButtonClick"
+                        Style="{StaticResource TitlebarCloseButtonStyle}">
+                    <Path
+                        Data="{DynamicResource Close}"
+                        Fill="{StaticResource BlackBrush}"
+                        StrokeThickness="2" />
+                </Button>
+            </Grid>
+            <!--End of: Title Bar-->
+
+            <Grid Grid.Row="1">
+                <Label
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center">
+                    Your content
+                </Label>
+            </Grid>
+        </Grid>
+    </Border>
 </Window>

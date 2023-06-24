@@ -5,6 +5,13 @@
              Startup="AppStartup"
              Exit="AppExit">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles\GlobalValues.xaml"/>
+                <ResourceDictionary Source="Styles\Styles.xaml"/>
+                <ResourceDictionary Source="Styles\Brushes.xaml"/>
+                <ResourceDictionary Source="Styles\Icons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
