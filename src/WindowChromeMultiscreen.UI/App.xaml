@@ -2,8 +2,9 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WindowChromeMultiscreen.UI"
-             StartupUri="MainWindow.xaml">
+             Startup="AppStartup"
+             Exit="AppExit">
     <Application.Resources>
-         
+
     </Application.Resources>
 </Application>

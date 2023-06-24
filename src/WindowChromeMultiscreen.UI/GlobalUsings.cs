@@ -16,5 +16,8 @@ global using System.Windows.Media;
 global using System.Windows.Media.Imaging;
 global using System.Windows.Navigation;
 global using System.Windows.Shapes;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
 global using WindowChromeMultiscreen.UI.Core;
 global using WindowChromeMultiscreen.UI.Dtos;
+global using WindowChromeMultiscreen.UI.Interfaces;
