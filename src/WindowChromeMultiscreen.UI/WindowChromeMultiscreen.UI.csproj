@@ -5,9 +5,14 @@
         <TargetFramework>net7.0-windows</TargetFramework>
         <Nullable>disable</Nullable>
         <UseWPF>true</UseWPF>
+        <PackageId>Window Chrome Multiscreen</PackageId>
+        <Authors>Window Chrome Multiscreen</Authors>
+        <Company>Window Chrome Multiscreen</Company>
+        <Product>Window Chrome Multiscreen</Product>
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Jot" Version="2.1.16" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
       <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
     </ItemGroup>
