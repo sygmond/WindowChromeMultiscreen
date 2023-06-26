@@ -2,6 +2,12 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowChromeMultiscreen.UI", "src\WindowChromeMultiscreen.UI\WindowChromeMultiscreen.UI.csproj", "{C153CBDC-4093-4905-8B52-F81BF03834D1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{D0883E0A-D2B6-4E3D-A19E-2A8DC97146D3}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.md = ReadMe.md
+		License.md = License.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
