@@ -1,9 +1,8 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <SolidColorBrush x:Key="BlackBrush" Color="#000000" />
 
-    <!--Titlebar Close, Minimize, Maximize brushes-->
+    <!--  Titlebar Close, Minimize, Maximize brushes  -->
     <SolidColorBrush x:Key="MouseOverOverlayBackgroundBrush" Color="#33000000" />
     <SolidColorBrush x:Key="PressedOverlayBackgroundBrush" Color="#44000000" />
     <SolidColorBrush x:Key="MouseOverWindowCloseButtonBackgroundBrush" Color="#E81122" />
