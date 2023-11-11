@@ -1,0 +1,24 @@
+﻿<wpf:CustomChromeWindow
+    x:Class="WindowChromeMultiscreen.Demo.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WindowChromeMultiscreen.Demo"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:wpf="clr-namespace:WindowChromeMultiscreen;assembly=WindowChromeMultiscreen"
+    Title="WindowChromeMultiscreen.Demo"
+    Width="800"
+    Height="450"
+    d:DataContext="{d:DesignInstance Type={x:Type local:MainViewModel}}"
+    mc:Ignorable="d">
+    <wpf:CustomChromeWindow.CenterControls>
+        <TextBox Width="200" Text="{Binding SearchValue, UpdateSourceTrigger=PropertyChanged}" />
+    </wpf:CustomChromeWindow.CenterControls>
+
+    <TextBlock
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Text="{Binding SearchValue}" />
+
+
+</wpf:CustomChromeWindow>
