@@ -1,0 +1,136 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:WindowChromeMultiscreen.Converters"
+    xmlns:local="clr-namespace:WindowChromeMultiscreen">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/WindowChromeMultiscreen;component/Themes/Brushes.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/WindowChromeMultiscreen;component/Themes/TitlebarButton.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <converters:DoubleToGridLenghtConverter x:Key="DoubleToGridLength" />
+
+    <ControlTemplate x:Key="DefaultWindowTemplate" TargetType="{x:Type local:CustomChromeWindow}">
+        <Border
+            x:Name="PART_WindowBorder"
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{TemplateBinding TitlebarHeight, Converter={StaticResource DoubleToGridLength}}" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+
+                <Grid x:Name="PART_Titlebar" Grid.Row="0">
+                    <StackPanel Orientation="Horizontal">
+                        <ItemsControl
+                            VerticalAlignment="Center"
+                            ItemsSource="{TemplateBinding BeforeTitleArea}"
+                            WindowChrome.IsHitTestVisibleInChrome="True">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+
+                        <TextBlock
+                            Margin="8,0"
+                            HorizontalAlignment="{TemplateBinding TitleHorizontalAlignment}"
+                            VerticalAlignment="Center"
+                            Text="{TemplateBinding Title}" />
+
+                        <ItemsControl
+                            VerticalAlignment="Center"
+                            ItemsSource="{TemplateBinding AfterTitleArea}"
+                            WindowChrome.IsHitTestVisibleInChrome="True">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal" />
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                        </ItemsControl>
+                    </StackPanel>
+
+                    <ItemsControl
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        ItemsSource="{TemplateBinding CenterArea}"
+                        WindowChrome.IsHitTestVisibleInChrome="True">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+
+                    <Grid
+                        x:Name="PART_WindowButtons"
+                        HorizontalAlignment="Right"
+                        WindowChrome.IsHitTestVisibleInChrome="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <local:TitlebarButton
+                            x:Name="PART_MinimizeButton"
+                            Grid.Column="0"
+                            Style="{StaticResource MinimizeTitlebarButton}" />
+
+                        <local:TitlebarButton
+                            x:Name="PART_MaximizeButton"
+                            Grid.Column="1"
+                            Style="{StaticResource MaximizeTitlebarButton}" />
+
+                        <local:TitlebarButton
+                            x:Name="PART_RestoreButton"
+                            Grid.Column="1"
+                            Style="{StaticResource RestoreTitlebarButton}" />
+
+                        <local:TitlebarButton
+                            x:Name="PART_CloseButton"
+                            Grid.Column="2"
+                            Style="{StaticResource CloseTitlebarButton}" />
+                    </Grid>
+                </Grid>
+
+                <AdornerDecorator Grid.Row="1">
+                    <ContentPresenter />
+                </AdornerDecorator>
+            </Grid>
+        </Border>
+    </ControlTemplate>
+
+    <Style x:Key="BaseChromeWindow" TargetType="{x:Type local:CustomChromeWindow}">
+        <Setter Property="WindowStyle" Value="None" />
+        <Setter Property="Background" Value="White" />
+
+        <!--  This property makes Windows 11 lose rounded corners  -->
+        <Setter Property="AllowsTransparency" Value="True" />
+
+        <Setter Property="AutomationProperties.IsOffscreenBehavior" Value="Onscreen" />
+        <Setter Property="RenderOptions.BitmapScalingMode" Value="Fant" />
+        <Setter Property="SizeToContent" Value="Manual" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="TitleHorizontalAlignment" Value="Left" />
+        <Setter Property="UseLayoutRounding" Value="True" />
+        <Setter Property="TitlebarHeight" Value="32" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BorderBrush" Value="{StaticResource WindowBorderBrush}" />
+        <Setter Property="WindowChrome.WindowChrome">
+            <Setter.Value>
+                <WindowChrome CaptionHeight="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type local:CustomChromeWindow}}, Path=TitlebarHeight}" ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" />
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Template" Value="{StaticResource DefaultWindowTemplate}" />
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self}, Path=WindowState}" Value="Maximized">
+                <Setter Property="BorderThickness" Value="0" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

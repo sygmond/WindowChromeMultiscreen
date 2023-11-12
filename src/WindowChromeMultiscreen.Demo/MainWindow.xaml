@@ -11,9 +11,26 @@
     Height="450"
     d:DataContext="{d:DesignInstance Type={x:Type local:MainViewModel}}"
     mc:Ignorable="d">
-    <wpf:CustomChromeWindow.CenterControls>
+    <wpf:CustomChromeWindow.BeforeTitleArea>
+        <Border
+            Margin="8,0,0,0"
+            Padding="8,4"
+            Background="LightBlue"
+            CornerRadius="4">
+            <TextBlock FontWeight="Light" Text="BEFORE" />
+        </Border>
+    </wpf:CustomChromeWindow.BeforeTitleArea>
+    <wpf:CustomChromeWindow.AfterTitleArea>
+        <Border
+            Padding="8,4"
+            Background="LightPink"
+            CornerRadius="4">
+            <TextBlock FontWeight="Light" Text="AFTER" />
+        </Border>
+    </wpf:CustomChromeWindow.AfterTitleArea>
+    <wpf:CustomChromeWindow.CenterArea>
         <TextBox Width="200" Text="{Binding SearchValue, UpdateSourceTrigger=PropertyChanged}" />
-    </wpf:CustomChromeWindow.CenterControls>
+    </wpf:CustomChromeWindow.CenterArea>
 
     <TextBlock
         HorizontalAlignment="Center"

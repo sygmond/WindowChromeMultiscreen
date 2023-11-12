@@ -1,0 +1,13 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+
+    <sys:Double x:Key="WindowMinHeight">300</sys:Double>
+    <sys:Double x:Key="WindowMinWidth">400</sys:Double>
+    <sys:Double x:Key="WindowHeight">450</sys:Double>
+    <sys:Double x:Key="WindowWidth">800</sys:Double>
+    <sys:Double x:Key="TitlebarSize">32</sys:Double>
+    <sys:Double x:Key="TitlebarButtonWidth">48</sys:Double>
+
+</ResourceDictionary>
