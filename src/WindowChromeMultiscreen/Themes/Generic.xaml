@@ -5,6 +5,5 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/WindowChromeMultiscreen;component/Themes/CustomChromeWindow.xaml" />
     </ResourceDictionary.MergedDictionaries>
-
     <Style BasedOn="{StaticResource BaseChromeWindow}" TargetType="{x:Type local:CustomChromeWindow}" />
 </ResourceDictionary>

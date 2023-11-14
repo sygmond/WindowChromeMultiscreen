@@ -7,6 +7,7 @@ public class TitlebarButton : Button
 {
     static TitlebarButton()
     {
-        DefaultStyleKeyProperty.OverrideMetadata(typeof(TitlebarButton), new FrameworkPropertyMetadata(typeof(TitlebarButton)));
+        DefaultStyleKeyProperty.OverrideMetadata(typeof(TitlebarButton),
+            new FrameworkPropertyMetadata(typeof(TitlebarButton)));
     }
 }
