@@ -5,7 +5,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="pack://application:,,,/WindowChromeMultiscreen;component/Themes/Brushes.xaml" />
         <ResourceDictionary Source="pack://application:,,,/WindowChromeMultiscreen;component/Themes/GlobalValues.xaml" />
-        <ResourceDictionary Source="pack://application:,,,/WindowChromeMultiscreen;component/Themes/Icons.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/WindowChromeMultiscreen;component/Themes/IconsWindows10.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <ControlTemplate x:Key="TitlebarButtonTemplate" TargetType="{x:Type local:TitlebarButton}">
